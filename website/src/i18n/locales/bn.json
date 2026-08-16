@@ -4750,7 +4750,6 @@
       "reject_sub_agent": "সাব-এজেন্ট প্রত্যাখ্যান করো: {{name}}",
       "remaining": "অবশিষ্ট",
       "remove": "সরান",
-      "resized": "আকার বদলানো",
       "resized_to_fit_model_limits": "মডেলের সীমার সঙ্গে মেলাতে আকার বদলানো হয়েছে",
       "resized_to_fit_model_limits_2": "মডেলের সীমার সঙ্গে মেলাতে আকার বদলানো হয়েছে: {{fromW}}×{{fromH}} থেকে {{toW}}×{{toH}}",
       "resolving": "মেলানো হচ্ছে…",

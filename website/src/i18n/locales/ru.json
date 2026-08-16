@@ -4896,7 +4896,6 @@
       "reject_sub_agent": "Отклонить субагента: {{name}}",
       "remaining": "Осталось",
       "remove": "Удалить",
-      "resized": "СЖАТО",
       "resized_to_fit_model_limits": "Размер изменён под ограничения модели",
       "resized_to_fit_model_limits_2": "Размер изменён под ограничения модели: с {{fromW}}×{{fromH}} до {{toW}}×{{toH}}",
       "resolving": "Разрешаю…",

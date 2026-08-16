@@ -4823,7 +4823,6 @@
       "reject_sub_agent": "Rejeter le sous-agent : {{name}}",
       "remaining": "Restant",
       "remove": "Supprimer",
-      "resized": "REDIMENSIONNÉ",
       "resized_to_fit_model_limits": "Redimensionné pour respecter les limites du modèle",
       "resized_to_fit_model_limits_2": "Redimensionné pour respecter les limites du modèle : {{fromW}}×{{fromH}} vers {{toW}}×{{toH}}",
       "resolving": "Résolution…",

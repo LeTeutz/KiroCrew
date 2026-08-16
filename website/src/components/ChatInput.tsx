@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useLayoutEffect, useCallback, useMemo, memo } from 'react'
-import { ArrowUpFromLine, ArrowUp, Loader2, RotateCw, Plus, Crop, Bot, Mic, Square, BookOpen, X, ClipboardList, CheckCircle, Ban, Sparkles, Target, Lock, Folder, FolderOpen, FileText } from 'lucide-react'
+import { ArrowUpFromLine, ArrowUp, Loader2, RotateCw, Plus, Crop, Bot, Mic, Square, BookOpen, X, ClipboardList, CheckCircle, Ban, Sparkles, Target, Lock, Folder, FolderOpen, FileText, Minimize2 } from 'lucide-react'
 import CopyBranchButton from './CopyBranchButton'
 import { usePointerDrag } from '../hooks/usePointerDrag'
 import VoiceStatusBar from './VoiceStatusBar'
@@ -424,12 +424,30 @@ function ResizeBadge({ resize }: { resize: ResizeInfo }) {
   return (
     <>
       <span
-        ref={ref}
         tabIndex={0}
+        role="img"
         aria-label={i18nT('components.chatInput.resized_to_fit_model_limits_2', { fromW: resize.fromW, fromH: resize.fromH, toW: resize.toW, toH: resize.toH })}
-        className="absolute bottom-1 left-1 z-10 px-1.5 py-[1px] rounded-full text-[10px] font-bold bg-accent text-accent-fg shadow-sm cursor-default"
+        className="absolute bottom-0 left-0 z-10 w-6 h-6 grid place-items-center cursor-default"
         onMouseEnter={show} onMouseLeave={hide} onFocus={show} onBlur={hide}
-      >{i18nT('components.chatInput.resized')}</span>
+      >
+        {/* The visible mark is 16x16, under the 24x24 minimum pointer target, so
+            it sits inside a transparent 24x24 hit box. Nothing moves: the outer
+            box paints nothing and is placed so the mark lands where it did. A
+            tap does reach the badge rather than the image button beneath it
+            (hit-test at the mark's centre returns the badge), but 16px is a
+            small thing to ask a thumb for. */}
+        <span ref={ref} className="w-4 h-4 grid place-items-center rounded-full bg-accent text-accent-fg shadow-sm">
+          {/* Icon, not the localized word: the badge sits inside a chip whose
+              width follows the image's aspect ratio, so a phone screenshot gives
+              it a 31px canvas — narrower than any catalog value. Measured on the
+              pill it replaces: English "RESIZED" laid out 52px and spilled
+              sideways over the neighbouring chip, while zh-CN "已缩放" broke per
+              character into 27x49 and covered 66% of the thumbnail it annotates.
+              The full sentence stays reachable through aria-label and the
+              hover/focus tooltip. */}
+          <Minimize2 size={10} aria-hidden="true" className="lucide-inline" />
+        </span>
+      </span>
       {tip && createPortal(
         <div
           role="tooltip"
@@ -464,7 +482,13 @@ function FilePreviewStrip({ files, dirs = [], resizedInfo, onRemove, onRemoveDir
               className="block cursor-pointer"
               onClick={(e) => { const img = e.currentTarget.querySelector('img'); if (img) dispatchLightbox(img) }}
             >
-              <img src={src} alt={path} className="h-16 rounded border border-border object-contain hover:opacity-80 transition-opacity"
+              {/* Height is fixed and width follows the aspect ratio, so an
+                  extreme ratio drives the chip to a useless size in either
+                  direction: a 1170x2532 phone screenshot measures 31px wide
+                  (the reported defect), and a panorama runs hundreds of px, so
+                  it scrolls its siblings out of view in this `overflow-x-auto`
+                  strip. Bound both ends and letterbox inside the box. */}
+              <img src={src} alt={path} className="h-16 min-w-12 max-w-32 rounded border border-border object-contain bg-bg-hover hover:opacity-80 transition-opacity"
                 data-lightbox-image="" />
             </button>
             {resize && <ResizeBadge resize={resize} />}

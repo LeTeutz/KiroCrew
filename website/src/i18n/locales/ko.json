@@ -4677,7 +4677,6 @@
       "reject_sub_agent": "하위 에이전트 거부: {{name}}",
       "remaining": "남음",
       "remove": "제거",
-      "resized": "크기 조절됨",
       "resized_to_fit_model_limits": "모델 한도에 맞게 크기를 조절했습니다",
       "resized_to_fit_model_limits_2": "모델 한도에 맞게 크기를 조절했습니다: {{fromW}}×{{fromH}}에서 {{toW}}×{{toH}}(으)로",
       "resolving": "해석 중…",

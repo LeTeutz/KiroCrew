@@ -4677,7 +4677,6 @@
       "reject_sub_agent": "拒绝子代理：{{name}}",
       "remaining": "剩余",
       "remove": "移除",
-      "resized": "已缩放",
       "resized_to_fit_model_limits": "已缩放以符合模型限制",
       "resized_to_fit_model_limits_2": "已缩放以适配模型限制：{{fromW}}×{{fromH}} 至 {{toW}}×{{toH}}",
       "resolving": "正在解析……",

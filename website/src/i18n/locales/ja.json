@@ -4677,7 +4677,6 @@
       "reject_sub_agent": "サブエージェントを拒否：{{name}}",
       "remaining": "残り",
       "remove": "削除",
-      "resized": "リサイズ済み",
       "resized_to_fit_model_limits": "モデルの制限に合わせてリサイズ",
       "resized_to_fit_model_limits_2": "モデルの上限に合わせてリサイズしました：{{fromW}}×{{fromH}} から {{toW}}×{{toH}}",
       "resolving": "解決中…",

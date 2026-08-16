@@ -4750,7 +4750,6 @@
       "reject_sub_agent": "Subagent ablehnen: {{name}}",
       "remaining": "Verbleibend",
       "remove": "Entfernen",
-      "resized": "GRÖSSE GEÄNDERT",
       "resized_to_fit_model_limits": "Größe an die Modellgrenzen angepasst",
       "resized_to_fit_model_limits_2": "An die Modellgrenzen angepasst: {{fromW}}×{{fromH}} auf {{toW}}×{{toH}}",
       "resolving": "Wird aufgelöst…",

@@ -4750,7 +4750,6 @@
       "reject_sub_agent": "सब-एजेंट अस्वीकार करो: {{name}}",
       "remaining": "शेष",
       "remove": "हटाएँ",
-      "resized": "आकार बदला",
       "resized_to_fit_model_limits": "मॉडल की सीमाओं में फ़िट करने के लिए आकार बदला गया",
       "resized_to_fit_model_limits_2": "मॉडल की सीमाओं में फ़िट करने के लिए आकार बदला: {{fromW}}×{{fromH}} से {{toW}}×{{toH}}",
       "resolving": "सुलझाया जा रहा है…",
