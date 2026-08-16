@@ -4,6 +4,27 @@ All notable changes to KiroCrew are documented in this file.
 
 ## [Unreleased]
 
+- **A malformed `config.json` no longer silently reopens the Slack
+  enterprise-origin allowlist.** `KiroCrewConfig.load()` normalizes a torn or
+  malformed config away and returns a defaults-shaped object instead of raising,
+  so `slack.allowed_enterprise_ids` came back empty -- indistinguishable from
+  "operator configured no allowlist" -- and `check_message_origin()` fell back to
+  its default-open path, accepting messages from any Slack workspace with no
+  error surfaced. `slack/enterprise.py` now reads the allowlist through ONE
+  validated read that answers both "is this config usable" and "what is the
+  allowlist", so the two answers cannot disagree; previously the value came from
+  `load()` while health was probed separately, and every shape where those two
+  diverged was another way in (non-object file, torn `config.local.json` overlay
+  leaving the base list in force, non-object `slack` section, and an allowlist
+  whose entries are all unusable). Any of those now fails CLOSED -- allowlist
+  enforced with only the validated `team_id` admitted, SEL-audited -- while a
+  genuinely absent or empty allowlist stays default-open exactly as before.
+  **Behaviour change:** on the `auth.test`-failure path an unreadable config used
+  to be swallowed and treated as "no restriction configured", which accepted an
+  unverifiable workspace; it now fails closed like the startup path. Same root
+  cause as the publish allowlist fixed in #3615, at call sites that fix did not
+  cover. (#3945)
+
 - **Removing a worktree in Dev Fleet no longer strands its pod's isolated
   HOME.** Reclamation was gated on the pod's unit still being ACTIVE, which the
   ordinary path never is: you stop the pod when testing ends and prune days
